@@ -3,3 +3,22 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.room_names{
+  color:blue;
+  display:block;
+  width: 60px;
+  margin-left: 20px;
+  padding:10px;
+}
+
+.sidebar{
+  float:left;
+  margin:0px;
+  padding:30px;
+  background-color: lightgray;
+  height:100%;
+  position:fixed;
+  overflow:auto;
+}
+
