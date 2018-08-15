@@ -31,14 +31,16 @@ render(){
        <div className = "Message_rooms">
             <h1 className="room-title">{this.props.activeRoom.name}</h1>
             <ul id="message-list">
-                {this.state.Message
-                .filter(message => Messages.roomID === this.props.activeRoom.key)
-                .map((message,index))} =>
-                <li key={index}>{messages.username} <br></br> {messages.content}</li>
-                )}
+                {this.state.message
+                .filter(message =>message.roomID === this.props.activeRoom.key)
+                .map((message,index) =>
+                <div>
+                  <li key={index}>{message.username} <br></br> {message.content}</li> 
+                  <li>{message.sentAt}</li>
+                </div>
+                )
+                }
             </ul>
-
-
         
       </div>
 
