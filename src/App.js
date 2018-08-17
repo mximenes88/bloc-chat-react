@@ -34,6 +34,7 @@ class App extends Component {
   setUser(user){
      this.setState({currentUser:user})
   }
+ 
 render(){
     return(
       <div className="App">
@@ -62,6 +63,7 @@ render(){
                user={this.state.currentUser}
                setUser={this.setUser}
               activeRoom= {this.state.activeRoom }
+            
             />
         </div>
 

@@ -36,10 +36,9 @@ class RoomList extends Component{
         <div className="rooms">
 
           <form onSubmit={e=>{e.preventDefault();this.createRoom(this.state.newRoomName)}}>
-            <input type = "text" placeholder="Add new room" value={this.state.newRoomName} onChange={(e)=> this.handleChange(e)}/>
+          <input type = "text" placeholder="Add new room" value={this.state.newRoomName} onChange={(e)=> this.handleChange(e)}/>
             <button className="adding_rooms_button">Add</button>
           </form>
-
 
          <section className="room_list">
            {this.state.rooms.map((room, index)=>

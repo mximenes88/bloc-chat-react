@@ -11,7 +11,8 @@ class MessageList extends Component{
                 content: '',
                 roomID: '',
                 sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
-             }]
+             }],
+             newMessages: '',
             } 
 
          this.MessagesRef= this.props.firebase.database().ref('Messages');
@@ -25,6 +26,22 @@ componentDidMount(){
         this.setState({ message: this.state.message.concat(message)});
     } );
 }
+
+
+createMessages(newMessages){
+     this.MessagesRef.push({
+        username: this.props.user ? this.props.user.displayName : 'Guest',
+        content: this.state.newMessages,
+        roomID: this.props.activeRoom.key,
+        sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
+      });
+
+    this.setState ({newMessages:" "})
+}
+
+ handleChange(e){
+    this.setState({newMessages: e.target.value});
+ }
 
 render(){
     const activeRoomKey = parseInt(this.props.activeRoom.key);
@@ -41,13 +58,18 @@ render(){
                 </div>
                 )
                 }
-            </ul>
+            </ul>  
+            <form id="create-message" onSubmit={ (e) => { e.preventDefault(); this.createMessages(this.state.newMessages) } }>
+                <input type="text" value={ this.state.newMessages } onChange={(e)=>this.handleChange(e)} placeholder="Please Type here" />
+                <input type="submit" />
+            </form>
         
       </div>
 
     )
  }
 }
+
 
 
 
