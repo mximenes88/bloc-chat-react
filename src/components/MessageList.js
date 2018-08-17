@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import moment from 'moment';
+import './messagelist.css';
+
 
 class MessageList extends Component{
      constructor(props){
@@ -15,8 +18,10 @@ class MessageList extends Component{
              newMessages: '',
             } 
 
-         this.MessagesRef= this.props.firebase.database().ref('Messages');
-         this.createMessages=this.createMessages.bind(this);
+         this.MessagesRef=this.props.firebase.database().ref('Messages');
+         
+            
+            this.createMessages=this.createMessages.bind(this);
      }
         
 
@@ -31,10 +36,10 @@ componentDidMount(){
 
 createMessages(newMessages){
      this.MessagesRef.push({
-        username: this.props.user ? this.props.user.name : 'Guest',
+        username: this.props.user ? this.props.user.displayName : 'Guest',
         content: this.state.newMessages,
-        roomID: this.props.activeRoom.key,
-        sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
+        roomId: this.props.activeRoom.key,
+        sentAt: this.props.firebase.database.ServerValue.TIMESTAMP
       });
 
     this.setState ({newMessages:''});
@@ -45,17 +50,17 @@ createMessages(newMessages){
  }
 
 render(){
-    const activeRoomKey = parseInt(this.props.activeRoom.key);
     return(
        <div className = "Message_rooms">
             <h1 className="room-title">{this.props.activeRoom.name}</h1>
             <ul id="message-list">
                 {this.state.message
-                .filter(message =>message.roomId === activeRoomKey)
+                .filter(message =>message.roomId == this.props.activeRoom.key)
                 .map((message,index) =>
                 <div key={index}>
-                  <li>{message.username} <br></br> {message.content}</li> 
-                  <li>{message.sentAt}</li>
+                  <li className="new_name">{message.username}</li>
+                  <li className="content">{message.content}</li> 
+                  <li className="time">{moment(message.sentAt).format('MMM Do YY, h:mm:ss a')}</li>
                 </div>
                 )
                 }
