@@ -14,8 +14,9 @@ body {
 
 .sidebar{
   float:left;
-  margin:0px;
-  padding:30px;
+  margin-top:0px;
+  padding-left:30px;
+  padding-right:30px;
   background-color: lightgray;
   height:100%;
   position:fixed;
@@ -36,4 +37,41 @@ body {
 .current_user{
    float:right;
    padding: 10px;
+}
+
+
+.list_items{
+   border:2px solid #00447c ;
+   background-color:#959db4 ;
+   color:White;
+   margin-bottom:10px;
+   width:flex;
+   margin-left:220px;
+   list-style: none;
+
+}
+.messages_printed{
+  position:fixed;
+  right:10px;
+  bottom:10px;
+  height:30px;
+  width:75%;
+  padding-top:20px;
+  padding-left:10px;
+  background:darkmagenta;
+  color:blue;
+}
+
+.input_box{
+  width:70%;
+  margin-bottom:5px;
+}
+
+.new_name{
+  margin-right:650px;
+  color:lightskyblue;
+}
+
+.input_btn{
+  padding-left:10px;
 }

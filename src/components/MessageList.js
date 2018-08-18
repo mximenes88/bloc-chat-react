@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import moment from 'moment';
-import './messagelist.css';
 
 
 class MessageList extends Component{
@@ -31,6 +30,9 @@ componentDidMount(){
         message.key= snapshot.key
         this.setState({ message: this.state.message.concat(message)});
     } );
+    this.MessagesRef.on('child_removed',snapshot =>{
+         this.setState({message:this.state.message.filter(message=>message.key !== snapshot.key)})
+    });
 }
 
 
@@ -49,26 +51,32 @@ createMessages(newMessages){
     this.setState({newMessages: e.target.value});
  }
 
+ removeMessage(message){
+     this.MessagesRef.child(message.key).remove();
+ }
+
 render(){
     return(
        <div className = "Message_rooms">
             <h1 className="room-title">{this.props.activeRoom.name}</h1>
-            <ul id="message-list">
+            <ul className="message-list">
                 {this.state.message
                 .filter(message =>message.roomId === this.props.activeRoom.key)
                 .map((message,index) =>
-                <div key={index}>
-                  <li className="content">{message.content}<br></br>{moment(message.sentAt).format('MMM Do YY, h:mm:ss a')}</li> 
-                  <li className="new_name">{message.username}</li>
+                <div  className="list_items" key={index}>
+                 <li className="new_name">{message.username}</li>
+                  <li className="content">{message.content}<br></br> {moment(message.sentAt).format( 'h:mm:ss a')} </li>
+                    <button onClick={()=>this.removeMessage(message)}>Delete Message</button>
+               
                 </div>
                 )
                 }
             </ul>  
            
           <section className="submit_form">
-            <form id="create-message" onSubmit={ (e) => { e.preventDefault(); this.createMessages(this.state.newMessages) } }>
-                <input type="text" value={ this.state.newMessages } onChange={(e)=>this.handleChange(e)} placeholder="Please Type here" />
-                <input type="submit" />
+            <form className="messages_printed" onSubmit={ (e) => { e.preventDefault(); this.createMessages(this.state.newMessages) } }>
+                <input className="input_box" type="text" value={ this.state.newMessages } onChange={(e)=>this.handleChange(e)} placeholder="Please Type here" />
+                <input className="input_btn" type="submit" />
             </form>
          </section>
         </div>
