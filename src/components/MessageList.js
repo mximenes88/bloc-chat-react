@@ -55,22 +55,24 @@ render(){
             <h1 className="room-title">{this.props.activeRoom.name}</h1>
             <ul id="message-list">
                 {this.state.message
-                .filter(message =>message.roomId == this.props.activeRoom.key)
+                .filter(message =>message.roomId === this.props.activeRoom.key)
                 .map((message,index) =>
                 <div key={index}>
+                  <li className="content">{message.content}<br></br>{moment(message.sentAt).format('MMM Do YY, h:mm:ss a')}</li> 
                   <li className="new_name">{message.username}</li>
-                  <li className="content">{message.content}</li> 
-                  <li className="time">{moment(message.sentAt).format('MMM Do YY, h:mm:ss a')}</li>
                 </div>
                 )
                 }
             </ul>  
+           
+          <section className="submit_form">
             <form id="create-message" onSubmit={ (e) => { e.preventDefault(); this.createMessages(this.state.newMessages) } }>
                 <input type="text" value={ this.state.newMessages } onChange={(e)=>this.handleChange(e)} placeholder="Please Type here" />
                 <input type="submit" />
             </form>
-        
-      </div>
+         </section>
+        </div>
+      
 
     )
  }

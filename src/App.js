@@ -5,6 +5,7 @@ import MessageList from './components/MessageList';
 import User from './components/User';
 import * as firebase from 'firebase';
 
+
 var config = {
   apiKey: "AIzaSyBqMn89fAp0_kKmdrBWExmh-hZHKs8owNQ",
   authDomain: "bloc-chat-react-43afe.firebaseapp.com",
@@ -57,12 +58,14 @@ render(){
               />
             </div>
           </div>
+          <h2>Welcome to the newest Bloc app!</h2>
+          <h3>Choose a room and get talking!</h3>
           <div className="message_info">
             <MessageList 
               firebase={firebase}
                user={this.state.currentUser}
                setUser={this.setUser}
-              activeRoom= {this.state.activeRoom }
+               activeRoom= {this.state.activeRoom }
             
             />
         </div>
