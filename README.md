@@ -1,6 +1,6 @@
-**BLOC Chat** -- Front-end Project
+#### Chatty App -- The new way to chat!
  
-Bloc Chat is a real-time chat application using Firebase, ReactJS and Javascript.
+Chatty App is a real-time chat application using Firebase, ReactJS and Javascript.
 
-Allow users to connect and enter different chat rooms. 
+ It allow users to connect and enter different chat rooms and to send/receive messages in real time.
 
