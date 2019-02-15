@@ -41,7 +41,7 @@ render(){
       <div className="App">
         <div className="sidebar">
             <header>
-              <h1>Bloc Chats</h1>
+              <h1>Chatty App</h1>
             </header>
             <div className="user_info">
               <User
@@ -58,7 +58,7 @@ render(){
               />
             </div>
           </div>
-          <h2>Welcome to the newest Bloc app!</h2>
+          <h2>Welcome to the newest way to be Chatty!</h2>
           <h3>Choose a room and get talking!</h3>
           <div className="message_info">
             <MessageList 
