@@ -1,4 +1,4 @@
-#### Chatty App :busts_in_silhouette:
+####Chatty App :busts_in_silhouette:
 
  <img width="300"  alt="screen shot 2019-02-15 at 1 30 08 pm" src="https://user-images.githubusercontent.com/19629111/53251679-32ac0880-368b-11e9-9ce4-4ee553f64695.png">
 
