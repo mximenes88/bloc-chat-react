@@ -46,7 +46,8 @@ body {
    color:White;
    margin-bottom:10px;
    width:flex;
-   margin-left:220px;
+   margin-left:250px;
+   margin-right:10px;
    list-style: none;
 
 }
@@ -55,7 +56,7 @@ body {
   right:10px;
   bottom:10px;
   height:30px;
-  width:75%;
+  width:70%;
   padding-top:20px;
   padding-left:10px;
   background:darkmagenta;
@@ -65,6 +66,7 @@ body {
 .input_box{
   width:70%;
   margin-bottom:5px;
+  margin-right:0px;
 }
 
 .new_name{
